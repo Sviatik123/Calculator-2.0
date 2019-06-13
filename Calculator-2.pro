@@ -29,13 +29,13 @@ SOURCES += \
         converter.cpp \
         main.cpp \
         mainwindow.cpp \
-        parser.cpp
+        validator.cpp
 
 HEADERS += \
         calculator.h \
         converter.h \
         mainwindow.h \
-        parser.h
+        validator.h
 
 FORMS += \
         mainwindow.ui

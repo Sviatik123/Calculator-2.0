@@ -1,19 +1,20 @@
 #include "calculator.h"
 
-Calculator::Calculator()
-{
-    Parser pars;
-    exp = pars.parse();
-    Converter conv;
-    polExp = conv.convert(exp);
-    result = 0;
-}
-
 Calculator::Calculator(std::string expression)
 {
-    exp = expression;
-    Converter conv;
-    polExp = conv.convert(exp);
+    Validator val;
+    isValid = val.validate(expression);
+    if(isValid)
+    {
+        exp = expression;
+        Converter conv;
+        polExp = conv.convert(exp);
+    }
+    else
+    {
+       exp = "";
+       polExp = "";
+    }
 }
 
 void Calculator::calculate()
@@ -143,12 +144,12 @@ void Calculator::calculate()
     result = expression.top();
 }
 
-void Calculator::printResult()
-{
-    std::cout<<result<<std::endl;
-}
-
 double Calculator::getResult()
 {
     return result;
+}
+
+bool Calculator::getIsValid()
+{
+    return isValid;
 }
